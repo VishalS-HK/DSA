@@ -98,7 +98,7 @@ NODE* deleteAtCertPos(NODE* head, int pos){
 
     else if(pos == 1){
         head = current -> next;
-        free(head);
+        free(current);
         current = NULL;
     }
 
