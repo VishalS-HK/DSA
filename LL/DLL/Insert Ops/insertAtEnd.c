@@ -71,6 +71,7 @@ NODE* insertAtEnd(NODE* head, int data){
 }
 
 void displayDLL(NODE* head){
+    
     if(head == NULL){
         printf("The DLL is empty!! There is nothing to display");
     }
