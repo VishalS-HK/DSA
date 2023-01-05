@@ -9,10 +9,11 @@ struct node{
 
 typedef struct node NODE;
 
+NODE* insertAtEnd(NODE*, int);
 void displayDLL(NODE*);
-NODE* insertAtBeg(NODE*, int);
 
 int main(){
+
     NODE* head = NULL;
     int value;
     int choice;
@@ -22,19 +23,22 @@ int main(){
         printf("\n2. Display");
         printf("\n0.Enter '0' for exiting the program!");
         printf("\n-------------------------------------------------------------------\n");
+
         printf("\nEnter your choice : ");
         scanf("%d", &choice);
 
         switch(choice){
+
             case 1:
-                printf("Enter the data to be inserted : ");
+                printf("Enter the data to be insertted : ");
                 scanf("%d", &value);
-                head = insertAtBeg(head, value);
+                head = insertAtEnd(head, value);
                 displayDLL(head);
                 break;
-
-            case 2: 
-                displayDLL(head);break;
+            
+            case 2:
+                displayDLL(head);
+                break;
             
             case 0:
                 exit(0);
@@ -44,22 +48,24 @@ int main(){
     return 0;
 }
 
-NODE* insertAtBeg(NODE* head, int data){
-    NODE* newNode;
-    newNode = (NODE*)malloc(sizeof(NODE));
+NODE* insertAtEnd(NODE* head, int data){
+
+    NODE* newNode = (NODE*)malloc(sizeof(NODE));
+    newNode -> data = data;
 
     if(head == NULL){
-        newNode -> data = data;
         newNode -> prev = NULL;
         newNode -> next = NULL;
         head = newNode;
     }
     else{
-        newNode -> data = data;
-        newNode -> prev = NULL;
-        newNode -> next = head;
-        head -> prev = newNode;
-        head = newNode;
+        NODE* temp = head;
+        while(temp -> next != NULL){
+            temp = temp -> next;
+        }
+        temp -> next = newNode;
+        newNode -> prev = temp;
+        newNode -> next = NULL;
     }
     return head;
 }
@@ -70,7 +76,7 @@ void displayDLL(NODE* head){
     }
     NODE* temp;
     temp = head;
-    while(temp != NULL){
+    while(temp){
         printf("%d ", temp -> data);
         temp = temp -> next;
     }
