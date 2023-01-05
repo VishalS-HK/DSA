@@ -19,7 +19,7 @@ int main(){
     int choice;
     while(!0){
         printf("\n-------------------------------------------------------------------");
-        printf("\n1.Enter the data to be inserted at the beginning");
+        printf("\n1.Enter the data to be inserted at the end");
         printf("\n2. Display");
         printf("\n0.Enter '0' for exiting the program!");
         printf("\n-------------------------------------------------------------------\n");
@@ -30,7 +30,7 @@ int main(){
         switch(choice){
 
             case 1:
-                printf("Enter the data to be insertted : ");
+                printf("Enter the data to be inserted : ");
                 scanf("%d", &value);
                 head = insertAtEnd(head, value);
                 displayDLL(head);
